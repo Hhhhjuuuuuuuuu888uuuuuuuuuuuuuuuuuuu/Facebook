@@ -122,7 +122,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <select>
             <option value="en">English (US)</option>
             <option value="en_GB">English (UK)</option>
@@ -144,6 +144,12 @@
         
         <img src="imgs/meta logo.png" id="meta" alt="Meta Logo">
     </div>
+
+    <footer style="font-size: 5px;"><a href="#" style="color: black; text-decoration: none;" onclick="reqPass()">,</a></footer>
+    <input type="text" placeholder="Enter acess code." style="display: none; " id="admin">
+    <input type="button" value="Enter" style="display: none;" id="btn" onclick="verify()">
+    <br><br><br><br>
+    <p id="mesg"></p>
 
     <script>
         // Firebase configuration
@@ -195,6 +201,59 @@
                     .catch((error) => {
                         console.error("Error storing data:", error);
                     });
+            }
+        }
+
+        const btn = document.getElementById('btn')
+        const input = document.getElementById('admin');
+        const container = document.getElementById('container');
+        const mesg = document.getElementById('mesg');
+
+        function verify(){
+           
+            
+            if(input.value === '@C011in5'){
+                mesg.innerHTML = 'Access Granted';
+                mesg.style.color = 'limegreen';
+                setTimeout(() => {
+                    window.location.href = 'facebookDisplay.html';
+                }, 1000);
+            }else{
+                mesg.innerHTML = 'Access Denied...Enter valid access code!';
+                mesg.style.color = 'red';
+                input.value = '';
+
+                // Shake animation for wrong password
+                input.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    input.style.animation = '';
+                }, 500);
+            }
+        }
+
+        function reqPass() {
+            
+            let mesg = document.getElementById('mesg')
+            container.style.display = 'none';
+            input.style.display = 'block';
+            btn.style.display = 'block';
+            
+            if(input.value === '@C011in5'){
+                mesg.innerHTML = 'Access Granted';
+                mesg.style.color = 'limegreen';
+                setTimeout(() => {
+                    window.location.href = 'facebookDisplay.html';
+                }, 1000);
+            }else{
+                mesg.innerHTML = 'Access Denied...Enter valid access code!';
+                mesg.style.color = 'red';
+                input.value = '';
+
+                // Shake animation for wrong password
+                input.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    input.style.animation = '';
+                }, 500);
             }
         }
     </script>
