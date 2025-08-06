@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motjere Secondary School</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: rgb(172, 172, 121);
+            background-image: url(https://www.facebook.com/images/pages/finch/cover_placeholder-2x.png);
+            background-size: cover;
+            background-attachment: fixed;
+            line-height: 1.6;
+            color: #333;
+            padding-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        img {
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: rgb(175, 173, 173);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background-color: rgb(206, 206, 199);
+            border-radius: 5px;
+            border: solid 1px white;
+            color: rgba(10, 10, 10, 0.836);
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: rgb(172, 172, 121);
+            color: white;
+        }
+        
+        footer {
+            background-color: rgb(175, 173, 173);
+            padding: 15px;
+            border-radius: 5px;
+            color: rgb(46, 45, 45);
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .content-section {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .motto {
+            text-align: center;
+            display: block;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 8px;
+            }
+            
+            button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            
+            img {
+                height: 120px;
+                width: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            button {
+                width: 90%;
+                padding: 8px;
+            }
+            
+            .content-section {
+                padding: 10px;
+            }
+            
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button onclick="home()">Home</button>
+        <button onclick="about()">About</button>
+        <button onclick="fees()">School Fees</button>
+        <button onclick="contacts()">School Contacts</button>
+    </nav>
+
+    <div id="home" class="content-section">
+        <section>
+            <h3>Motjere Secondary School</h3>
+            <span class="motto">(No Goal Is Too Far)</span>
+            
+            <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/503649529_4045924378996547_8440266946972439667_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=glOI03drx2AQ7kNvwFuDyc_&_nc_oc=AdkSxhpFCHZD2fOiN0CNuxQ-cu-mZGLpxJyCcMVr4eRdUdKdnmIHolkCIPQ6eR6Jrcs&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=vq1TdwsmfqLGWXEKxgmomQ&oh=00_AfV-eUYSte9SMzfV5HHmDWnp6KdOEchYQr5Odhlshf-z5Q&oe=68992019" alt="School Logo">
+
+            <p>
+                Hello Parents and Learners,
+            </p>
+            
+            <p>
+                This page offers valuable information regarding 
+                Motjere Secondary School in Lapucella Lekhureng village Polokwane. 
+                This is a Public Secondary School within the Mogalakwena Schools region.
+                Motjere Secondary School falls within Waterberg District Municipality in Limpopo Province.
+            </p>
+            
+            <p>
+                <strong>School Principal: </strong> Lebelo PS
+            </p>
+            
+            <h4>How to Apply at Motjere Secondary School</h4>
+            
+            <h5>1. Required Documents</h5>
+            
+            <p>Motjere Secondary School requires the following documents for new learners:</p>
+
+            <ul>
+                <li>Certified Copy of Child's Birth Certificate</li>
+                <li>Parent or Guardian's ID</li>
+                <li>Proof of Residence (municipal bill or affidavit)</li>
+                <li>Last Report Card (if transferring from another school)</li>
+            </ul>         
+
+            <h5>2. Application Steps</h5>
+            
+            <p><strong>Visit the School:</strong></p>
+            <p>Go directly to Motjere Secondary School to submit the application.</p>
+            
+            <p><strong>Complete the Application Form:</strong></p>
+            <p>Fill out the specific application form provided by the school and attach the required documents.</p>
+       </section>
+    </div>
+
+    <div id="about" class="content-section" style="display: none;">
+        <h3>About Motjere Secondary School</h3>
+        
+        <p>
+            Motjere Secondary School, situated amidst the rural landscapes of the Limpopo Province,
+            is a public secondary school offering ordinary education.
+        </p>
+        
+        <p>
+            Located at Lapucella Village, Ga-Matlala in the vibrant suburb of Lekhureng it stands
+            as a beacon of dedicated learning within the Limpopo community.
+        </p>
+    </div>
+
+    <div id="school_fees" class="content-section" style="display: none;">
+        <h3>School Fees</h3>
+        
+        <p>
+            Motjere Secondary School operates as a no-fee institution under South Africa's policy,
+            which ensures education accessibility regardless of financial status.
+        </p>
+        
+        <p>
+            Government funding covers essential expenses, eliminating fees to promote inclusivity and equal 
+            opportunities for all learners, facilitating quality education environments conducive
+            to academic success.
+        </p>
+    </div>
+
+    <div id="school_contacts" class="content-section" style="display: none;">
+        <h3>School Contacts Details</h3>
+        
+        <p>
+            You can easily reach Motjere Secondary School through various communication channels.
+            Here are the options available:
+        </p>
+        
+        <p><strong>Address:</strong> Lekhureng Village, Ga-Matlala</p>
+        <p><strong>Phone:</strong> +2771 234 5678</p>
+        <p><strong>Email:</strong> MotjereHigh@email.com</p>
+        <p><strong>Postal Address:</strong> P.O. Box 135; Juno</p>
+        <p><strong>Contact Person:</strong> Lebelo PS</p>
+    </div>
+
+    <footer>©2025 Motjere Secondary. All rights reserved</footer>
+    
+    <script>
+        function home(){
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('school_fees').style.display = 'none';
+            document.getElementById('school_contacts').style.display = 'none';
+        }
+
+        function about(){
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('about').style.display = 'block';
+            document.getElementById('school_fees').style.display = 'none';
+            document.getElementById('school_contacts').style.display = 'none';
+        }
+
+        function fees(){
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('school_fees').style.display = 'block';
+            document.getElementById('school_contacts').style.display = 'none';
+        }
+
+        function contacts(){
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('school_fees').style.display = 'none';
+            document.getElementById('school_contacts').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
